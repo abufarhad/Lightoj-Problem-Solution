@@ -1,3 +1,6 @@
+
+///https://shikhorroy.wordpress.com/2014/02/22/wp-mep2mliv-6g/?fbclid=IwAR1oWHS__kVppDajcjfsfq-Z9084xLKZfk6ercDvnZHV3_laz8SaWsydLh4
+
 #include<bits/stdc++.h>
 #include<stdio.h>
 using namespace std;

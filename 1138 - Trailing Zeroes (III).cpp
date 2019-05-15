@@ -30,7 +30,10 @@ using namespace std;
 #define ss              second
 #define sqr(x)        (x)*(x)
 
-
+/*  If we look closely, we will find that 30!, 31!, 32!, 33! and 34!,
+all contain the same number of trailing zeroes.
+So we need to take 30!. we can do it by simply deduct remainder of n when the divider is 5.
+*/
 
 ll calc_fac_5( ll n)
 {
@@ -45,7 +48,7 @@ ll calc_fac_5( ll n)
 
 ll binarySearch( ll n )
 {
-    ll low=0,high=10000000000000000,ans=0,m;
+    ll low=0,high=n*5,ans=0,m;
     while (low <= high)
     {
         int m = (low + high)/2;
@@ -64,10 +67,8 @@ ll binarySearch( ll n )
 
 int main()
 {
-
     ll m,n,t,b,c,d,i,j,k,x,y,z,ans;
     scl(t);
-
     for(x=1; x<=t; x++)
     {
         ll cnt=0;
@@ -76,8 +77,7 @@ int main()
         ans=binarySearch(n );
 
         if(ans==0) printf("Case %lld: impossible\n",x);
-        else
-            printf("Case %lld: %lld\n",x,ans);
+        else          printf("Case %lld: %lld\n",x,ans);
     }
 
     return 0;
