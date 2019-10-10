@@ -68,13 +68,6 @@ using namespace std;
 #define max3(a, b, c) max(a, b) > max(b, c) ? max(a, b) : max(b, c)
 #define min3(a, b, c) min(a, b) < min(b, c) ? min(a, b) : min(b, c)
 
-#define gcd(a, b)        __gcd(a, b)
-#define lcm(a, b)        ((a)*((b)/gcd(a,b)))
-#define file_read(filename)  freopen("input.txt","r",stdin);
-#define file_write(filename)  freopen("output.txt","w",stdout);
-/// ll binarySearch( ll a[] , int l, int r, int x) { while (l <= r) {  int m = l + (r-l)/2; if (a[m] == x) return m; if (a[m] < x) l = m + 1;elser = m - 1;}}
-//string charecter frequency --->
-// for(i=0;i<s.length();i++) {  cnt[s[i]-'a']++; }
 
 #define mod 1000000007
 #define sv(a) sort(a.begin(),a.end())

@@ -16,63 +16,50 @@ using namespace std;
 #define pfl(x)              printf("%lld\n",x)
 #define endl 	            "\n"
 #define pb                  push_back
-#define l(s)                      s.size()
 #define asort(a)            sort(a,a+n)
 #define dsort(a)            sort(a,a+n,greater<int>())
 #define vasort(v)         sort(v.begin(), v.end());
 #define vdsort(v)         sort(v.begin(), v.end(),greater<int>());
 #define pn                  printf("\n")
+#define md                  10000007
 #define debug               printf("I am here\n")
 #define ps                  printf(" ")
-#define mem(a)          memset(a, -1, sizeof(a))
+#define l(s)                      s.size()
 #define tcas(i,t)             for(ll i=1;i<=t;i++)
-#define pcas(i)                printf("Case %lld: ",i)
-#define md                     100000007
-ll dp[51][1001];
-ll  coin[51], times[51], n, amt;
-
-ll make_way(ll i, ll amnt)
-{
-    if(i>=n)
-    {
-        if(amnt==0)return 1;
-        else return 0;
-    }
-    ll res=0;
-    if(dp[i][amnt]!=-1)return dp[i][amnt];
-
-    for(ll k=1; k<=times[i];k++)
-    {
-        if(amnt- k*coin[i]>=0 )
-            res+=make_way( i+1,  amnt- (k*coin[i]) )%md;
-        else break;
-    }
-    res+=(make_way(i+1, amnt))%md;
-
-    dp[i][amnt]=res%md;
-    return dp[i][amnt];
-}
+#define pcas(i)                printf("Case %lld:\n",i)
+#define N 100006
 
 int main()
 {
 
-    ll m,t,b,c,d,i,j,k,x,y,z,l,q,r;
-      scl(t);
-      tcas(x,t)
-      {
-      //memset(dp, -1, sizeof(dp));
-      mem(dp);
-      ll amt=0;
-      scl(n), scl(amt);
+    ll m,n,t,b,c,d,i,j,k,x,y,z,l,q,r;
+
       ll cnt=0,ans=0;
+      scl(t);
+      tcas(i,t)
+      {
+      scl(n);scl(q);
+      vector<ll>v;
+      fr(i,n)cin>>x, v.pb(x);
+      vasort(v);
+      pcas(i);
+      while(q--)
+      {
+          cnt=0;
+          scl(l), scl(r);
+        //  if(binary_search(v.begin(), v.end(), l)) cnt=1;
+          vector<ll>::iterator dwn, up;
+          dwn=lower_bound(v.begin(), v.end(), l);
+          up=upper_bound(v.begin(), v.end(), r);
 
-      fr(i,n)scl(coin[i]);
-      fr(i,n)scl(times[i]);
-      pcas(x);
+          x=(dwn - v.begin());
+          y=(up - v.begin());
 
-      ans=make_way(0,amt);
+         ans=(y-x);
 
-      pfl(ans);
+          pfl(ans);
+          //cout<<" ->"<<ans<<endl;
+      }
       }
 return 0;
 }

@@ -53,7 +53,7 @@ ll binarySearch( ll n )
     {
         int m = (low + high)/2;
         if (calc_fac_5(m) > n)  high = m - 1;
-        else if (calc_fac_5(m)< n)  low = m + 1;
+        else if (calc_fac_5(m)< n)   low = m + 1;
         else
         {
             ans= m;
@@ -76,8 +76,10 @@ int main()
 
         ans=binarySearch(n );
 
-        if(ans==0) printf("Case %lld: impossible\n",x);
-        else          printf("Case %lld: %lld\n",x,ans);
+        if(ans==0)
+            printf("Case %lld: impossible\n",x);
+        else
+            printf("Case %lld: %lld\n",x,ans);
     }
 
     return 0;

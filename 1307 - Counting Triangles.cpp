@@ -16,64 +16,74 @@ using namespace std;
 #define pfl(x)              printf("%lld\n",x)
 #define endl 	            "\n"
 #define pb                  push_back
-#define l(s)                      s.size()
 #define asort(a)            sort(a,a+n)
 #define dsort(a)            sort(a,a+n,greater<int>())
 #define vasort(v)         sort(v.begin(), v.end());
 #define vdsort(v)         sort(v.begin(), v.end(),greater<int>());
 #define pn                  printf("\n")
+#define md                  10000007
 #define debug               printf("I am here\n")
 #define ps                  printf(" ")
-#define mem(a)          memset(a, -1, sizeof(a))
+#define l(s)                      s.size()
 #define tcas(i,t)             for(ll i=1;i<=t;i++)
 #define pcas(i)                printf("Case %lld: ",i)
-#define md                     100000007
-ll dp[51][1001];
-ll  coin[51], times[51], n, amt;
+vector<ll>a;
 
-ll make_way(ll i, ll amnt)
+ll bs(ll l, ll r, ll val)
 {
-    if(i>=n)
+    ll ans=l-1, mid;
+    while(l<=r)
     {
-        if(amnt==0)return 1;
-        else return 0;
+        mid=(l+r)>>1;
+        if(a[mid]<val)
+        {
+            ans=mid;
+            l=mid+1;
+        }
+        else r=mid-1;
     }
-    ll res=0;
-    if(dp[i][amnt]!=-1)return dp[i][amnt];
-
-    for(ll k=1; k<=times[i];k++)
-    {
-        if(amnt- k*coin[i]>=0 )
-            res+=make_way( i+1,  amnt- (k*coin[i]) )%md;
-        else break;
-    }
-    res+=(make_way(i+1, amnt))%md;
-
-    dp[i][amnt]=res%md;
-    return dp[i][amnt];
+    return ans;
 }
 
 int main()
 {
-
-    ll m,t,b,c,d,i,j,k,x,y,z,l,q,r;
+    ll m,n,t,b,c,d,i,j,k,x,y,z,l,q,r;
       scl(t);
-      tcas(x,t)
+      tcas(j,t)
       {
-      //memset(dp, -1, sizeof(dp));
-      mem(dp);
-      ll amt=0;
-      scl(n), scl(amt);
-      ll cnt=0,ans=0;
+          ll cnt=0,ans=0;
+          scl(n);
 
-      fr(i,n)scl(coin[i]);
-      fr(i,n)scl(times[i]);
-      pcas(x);
+          fr(i,n)cin>>x, a.pb(x);
+          vasort(a);
 
-      ans=make_way(0,amt);
 
+    ///******* One way upper_bond binary search ***********
+
+//          fr(i,n)
+//          {
+//              for(k=i+1;k<n-1;k++)
+//              {
+//                  ll index=upper_bound(a.begin(), a.end(), a[i]+a[k]-1 )-a.begin()-1;
+//                  ans+=(index-k);
+//              }
+//          }
+
+     ///*******Another way direct binary search***********
+
+     fr(i,n)
+     {
+         for(k=i+1;k<n;k++)
+         {
+             ans+=bs(k+1, n-1, a[i]+a[k] )-k;
+         }
+     }
+
+      pcas(j);
       pfl(ans);
-      }
+      a.clear();
+}
+
 return 0;
 }
 

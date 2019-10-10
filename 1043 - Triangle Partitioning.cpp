@@ -4,6 +4,8 @@
  ** @Category:
 /** ========================================**/
 
+/// src: http://ishtiaqhimu.blogspot.com/2018/08/1043-triangle-partitioning.html
+
 #include<bits/stdc++.h>
 #include<stdio.h>
 using namespace std;
